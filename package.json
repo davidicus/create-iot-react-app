@@ -7,7 +7,8 @@
     "create-iot-react-app": "index.js"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "babel src --out-dir build",
+    "test": "eslint index.js --fix"
   },
   "repository": {
     "type": "git",
@@ -26,6 +27,12 @@
   "homepage": "https://github.com/davidicus/create-iot-react-app#readme",
   "dependencies": {
     "colors": "^1.3.0",
+    "jest": "^23.6.0",
     "shelljs": "^0.8.2"
+  },
+  "devDependencies": {
+    "eslint": "^5.11.1",
+    "eslint-config-airbnb-base": "^13.1.0",
+    "eslint-plugin-import": "^2.14.0"
   }
 }
