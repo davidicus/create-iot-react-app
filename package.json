@@ -1,0 +1,31 @@
+{
+  "name": "create-iot-react-app",
+  "version": "0.0.1",
+  "description": "thin wrapper around create-react-app that add extra functionality needed on most iot projects",
+  "main": "index.js",
+  "bin": {
+    "create-iot-react-app": "index.js"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/davidicus/create-iot-react-app.git"
+  },
+  "keywords": [
+    "react",
+    "create-react-app",
+    "node"
+  ],
+  "author": "David Conner",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/davidicus/create-iot-react-app/issues"
+  },
+  "homepage": "https://github.com/davidicus/create-iot-react-app#readme",
+  "dependencies": {
+    "colors": "^1.3.0",
+    "shelljs": "^0.8.2"
+  }
+}
