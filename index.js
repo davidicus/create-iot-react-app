@@ -1,8 +1,7 @@
 #!/usr/bin/env node
 
-const shell = require("shelljs");
-const colors = require("colors"); // eslint-disable-line
 const fs = require("fs");
+const { exec } = require("child_process");
 const templates = require("./templates/templates.js");
 
 const appName = process.argv[2];
@@ -11,29 +10,33 @@ const appDirectory = `${process.cwd()}/${appName}`;
 const createReactApp = () =>
   new Promise(resolve => {
     if (appName) {
-      shell.exec(`npx create-react-app ${appName}`, () => {
+      exec(`npx create-react-app ${appName}`, (error, stdout, stderr) => {
+        if (error) {
+          console.error(`exec error: ${error}`);
+          resolve(false);
+        }
+        console.log(`stdout: ${stdout}`);
+        console.log(`stderr: ${stderr}`);
         console.log("Created react app");
         resolve(true);
       });
     } else {
-      console.log("\nNo app name was provided.".red);
+      console.log("\nNo app name was provided.");
       console.log("\nProvide an app name in the following format: ");
-      console.log("\ncreate-iot-react-app ", "app-name\n".cyan);
+      console.log("\ncreate-iot-react-app ", "app-name\n");
       resolve(false);
     }
   });
 
-const cdIntoNewApp = () =>
-  new Promise(resolve => {
-    shell.exec(`cd ${appName}`, () => {
-      resolve();
-    });
-  });
-
-const addStorybook = () =>
-  new Promise(resolve => {
-    shell.exec(`npx storybook`, () => {
-      console.log("adding storybook");
+const cdAndStorybook = () =>
+  new Promise((resolve, reject) => {
+    exec(`cd ${appName} && npx storybook`, (error, stdout, stderr) => {
+      if (error) {
+        console.error(`exec error: ${error}`);
+        reject();
+      }
+      console.log(`stdout: ${stdout}`);
+      console.log(`stderr: ${stderr}`);
       resolve();
     });
   });
@@ -41,13 +44,12 @@ const addStorybook = () =>
 const installPackages = () =>
   new Promise(resolve => {
     console.log(
-      "\nInstalling storybook, node-sass,  @reach/router, react-intl, carbon-components, carbon-components-react, carbon-icons, classnames\n"
-        .cyan
+      "\nInstalling node-sass, @reach/router, react-intl, carbon-components, carbon-components-react, carbon-icons, classnames\n"
     );
-    shell.exec(
-      "yarn add node-sass @reach/router react-intl carbon-components carbon-components-react carbon-icons classnames",
+    exec(
+      `yarn --cwd ${appDirectory} add node-sass @reach/router react-intl carbon-components carbon-components-react carbon-icons classnames @babel/core babel-loader@8.0.4`,
       () => {
-        console.log("\nFinished installing packages\n".green);
+        console.log("\nFinished installing packages\n");
         resolve();
       }
     );
@@ -80,12 +82,10 @@ const run = async () => {
   if (!success) {
     console.log(
       "Something went wrong while trying to create a new React app using create-react-app"
-        .red
     );
     return false;
   }
-  await cdIntoNewApp();
-  await addStorybook();
+  await cdAndStorybook();
   await installPackages();
   await updateTemplates();
   console.log("All done");
