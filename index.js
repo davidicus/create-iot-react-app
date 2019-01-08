@@ -1,7 +1,5 @@
 #!/usr/bin/env node
 
-// const shell = require("shelljs");
-// const colors = require("colors"); // eslint-disable-line
 const fs = require("fs");
 const { exec } = require("child_process");
 const templates = require("./templates/templates.js");
@@ -46,10 +44,10 @@ const cdAndStorybook = () =>
 const installPackages = () =>
   new Promise(resolve => {
     console.log(
-      "\nInstalling node-sass,  @reach/router, react-intl, carbon-components, carbon-components-react, carbon-icons, classnames\n"
+      "\nInstalling node-sass, @reach/router, react-intl, carbon-components, carbon-components-react, carbon-icons, classnames\n"
     );
     exec(
-      `yarn --cwd ${appDirectory} add node-sass @reach/router react-intl carbon-components carbon-components-react carbon-icons classnames`,
+      `yarn --cwd ${appDirectory} add node-sass @reach/router react-intl carbon-components carbon-components-react carbon-icons classnames @babel/core babel-loader@8.0.4`,
       () => {
         console.log("\nFinished installing packages\n");
         resolve();

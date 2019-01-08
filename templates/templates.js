@@ -1,5 +1,6 @@
+/* eslint-disable */
 module.exports = {
   "App.js": require("./App.js"),
   "index.js": require("./index.js"),
-  "store.js": require("./store.js")
+  "App.scss": require("./AppStyles.js")
 };

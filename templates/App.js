@@ -1,25 +1,41 @@
-module.exports = `import React, { Component } from 'react'
+module.exports = `
+/**
+ * IBM Confidential
+ * OCO Source Materials
+ * 5900-A0N
+ * © Copyright IBM Corp. 2018
+ * The source code for this program is not published or otherwise divested of its
+ * trade secrets, irrespective of what has been deposited with the U.S. Copyright
+ * Office.
+ */
+
+import React, { Component } from 'react';
 import logo from './logo.svg'
-import './App.css'
-import { connect } from 'react-redux'
+import './App.scss'
+
 class App extends Component {
   render() {
     return (
       <div className="App">
-        <div className="App-header">
+        <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
-          <h2>Welcome to React</h2>
-        </div>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
+          <p>
+            Edit <code>src/App.js</code> and save to reload.
+          </p>
+          <a
+            className="App-link"
+            href="https://reactjs.org"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Learn React
+          </a>
+        </header>
       </div>
     );
   }
 }
-export default connect(
-  state=>({
-}),
-  {}
-)(App)
+
+export default App;
+
 `;
