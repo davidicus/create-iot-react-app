@@ -1,21 +1,11 @@
 module.exports = `
-@import "~carbon-components/scss/globals/scss/css--reset";
+@import "~carbon-addons-iot-react/lib/index.css";
 @import "~carbon-components/scss/globals/scss/styles";
 @import "~carbon-components/scss/globals/scss/vars";
 @import "~carbon-components/scss/globals/scss/colors";
-@import "~carbon-components/scss/globals/scss/typography";
+@import "~carbon-components/scss/globals/scss/theme";
 
 $wiot-gradient: linear-gradient(45deg, $carbon--purple-40, $carbon--blue-50);
-
-// special characters (arrows)
-@import url("https://fonts.googleapis.com/css?family=IBM+Plex+Sans&text=←→↑↓↔↕↖↗↘↙↚↛↮⟵⟶⟷↰↱↲↳⬐⬎⬑⬏↴↵");
-
-$font-family: "IBM Plex Sans", "Helvetica Neue", Arial, sans-serif;
-$font-family-mono: "IBM Plex Mono", "Menlo", "DejaVu Sans Mono",
-  "Bitstream Vera Sans Mono", Courier, monospace;
-
-// Typography
-@include carbon--type-reset();
 
 /// Set the theme to Gray 10
 @import "~@carbon/themes/scss/themes";
