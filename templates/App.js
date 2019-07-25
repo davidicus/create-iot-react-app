@@ -3,7 +3,6 @@ import React, { Component } from "react";
 import AppSwitcher from "@carbon/icons-react/lib/app-switcher/24";
 import Chip from "@carbon/icons-react/lib/chip/24";
 import Group from "@carbon/icons-react/lib/group/24";
-import AddFilled16 from "@carbon/icons-react/lib/add--filled/16";
 import {
   HeaderContainer,
   Header,
