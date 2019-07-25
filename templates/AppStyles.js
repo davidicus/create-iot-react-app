@@ -1,6 +1,5 @@
 module.exports = `
 @import "~carbon-addons-iot-react/lib/index.css";
-@import "~carbon-components/scss/globals/scss/styles";
 @import "~carbon-components/scss/globals/scss/vars";
 @import "~carbon-components/scss/globals/scss/colors";
 @import "~carbon-components/scss/globals/scss/theme";

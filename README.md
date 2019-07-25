@@ -10,20 +10,20 @@ Kick off the cli by typing the following into your terminal
 npx create-iot-react-app <app-name>
 ```
 
-When this process is completed cd into the project folder you just created
+When the process is completed cd into the project folder just created
 
 ```
 cd <app-name>
 ```
 
-you can either build components using storybook
-
-```
-yarn storybook
-```
-
-or start up your application
+and then start up your application
 
 ```
 yarn start
+```
+
+or
+
+```
+npm start
 ```

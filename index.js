@@ -32,7 +32,9 @@ const createReactApp = () => new Promise((resolve) => {
         }
         console.log(`stdout: ${stdout}`.data);
         console.log(`stderr: ${stderr}`.data);
-        console.log('Created react app, now installing storybook.'.custom);
+        console.log(
+          'Created react app, now installing supporting packages.'.custom,
+        );
         resolve(true);
       });
     } else {
@@ -43,31 +45,31 @@ const createReactApp = () => new Promise((resolve) => {
     }
   });
 
-const cdAndStorybook = () => new Promise((resolve, reject) => {
-    exec(
-      `cd ${appName} && npx -p @storybook/cli sb init`,
-      (error, stdout, stderr) => {
-        if (error) {
-          console.error(`exec error: ${error}`.error);
-          reject();
-        }
-        console.log(`stdout: ${stdout}`.data);
-        console.log(`stderr: ${stderr}`.data);
-        console.log(
-          'Storybook added, now installing supporting packages.'.custom,
-        );
-        resolve();
-      },
-    );
-  });
+// const cdAndStorybook = () => new Promise((resolve, reject) => {
+//     exec(
+//       `cd ${appName} && npx -p @storybook/cli sb init`,
+//       (error, stdout, stderr) => {
+//         if (error) {
+//           console.error(`exec error: ${error}`.error);
+//           reject();
+//         }
+//         console.log(`stdout: ${stdout}`.data);
+//         console.log(`stderr: ${stderr}`.data);
+//         console.log(
+//           'Storybook added, now installing supporting packages.'.custom,
+//         );
+//         resolve();
+//       },
+//     );
+//   });
 
 const installPackages = () => new Promise((resolve) => {
     console.log(
-      '\nInstalling node-sass, @reach/router, react-intl, carbon-components, @carbon/icons,  @carbon/icons-react, carbon-addons-iot-react@beta, classnames\n'
+      '\nInstalling node-sass, @reach/router, react-intl, carbon-components, @carbon/icons, @carbon/icons-react, carbon-addons-iot-react@beta, classnames\n'
         .help,
     );
     exec(
-      `yarn --cwd ${appDirectory} add node-sass @reach/router react-intl carbon-components @carbon/icons @carbon/icons-react carbon-addons-iot-react@beta classnames`,
+      `cd ${appName} && yarn --cwd ${appDirectory} add node-sass @reach/router react-intl carbon-components @carbon/icons @carbon/icons-react carbon-addons-iot-react@beta classnames`,
       () => {
         console.log('\nFinished installing packages\n'.custom);
         resolve();
@@ -108,7 +110,7 @@ const run = async () => {
     );
     return false;
   }
-  await cdAndStorybook();
+  // await cdAndStorybook();
   await installPackages();
   await updateTemplates();
   console.log(
