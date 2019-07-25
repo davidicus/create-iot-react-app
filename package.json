@@ -1,6 +1,6 @@
 {
   "name": "create-iot-react-app",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "thin wrapper around create-react-app that add extra functionality needed on most iot projects",
   "main": "index.js",
   "bin": {
