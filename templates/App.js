@@ -107,10 +107,8 @@ class App extends Component {
             <ButtonEnhanced
               href="https://beta.carbon-addons-iot-react.com/"
               target="_blank"
-              iconDescription="Button icon"
               onClick={() => {}}
               onFocus={() => {}}
-              renderIcon={AddFilled16}
             >
               Get Components
             </ButtonEnhanced>
