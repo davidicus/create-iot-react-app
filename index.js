@@ -92,7 +92,7 @@ const updateTemplates = () => new Promise((resolve) => {
         },
       );
     });
-  });
+  }); 
   Promise.all(promises).then(() => {
     resolve();
   });
