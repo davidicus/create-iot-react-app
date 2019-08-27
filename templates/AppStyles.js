@@ -1,16 +1,10 @@
 module.exports = `
-@import "~carbon-addons-iot-react/lib/index.css";
-@import "~carbon-components/scss/globals/scss/vars";
-@import "~carbon-components/scss/globals/scss/colors";
-@import "~carbon-components/scss/globals/scss/theme";
+@import "~carbon-addons-iot-react/lib/css/carbon-addons-iot-react.css";
+@import "~carbon-addons-iot-react/lib/scss/globals/scss/vars";
+@import "~carbon-addons-iot-react/lib/scss/globals/scss/colors";
+@import "~carbon-addons-iot-react/lib/scss/globals/scss/theme";
 
-$wiot-gradient: linear-gradient(45deg, $carbon--purple-40, $carbon--blue-50);
 
-/// Set the theme to Gray 10
-@import "~@carbon/themes/scss/themes";
-$carbon--theme: $carbon--theme--g10;
-// Use the gray 10 theme
-@include carbon--theme();
 
 html,
 body,
