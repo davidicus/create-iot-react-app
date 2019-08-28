@@ -7,7 +7,7 @@ import {
   HeaderContainer,
   Header,
   SideNav,
-  ButtonEnhanced,
+  Button,
   PageHero
 } from "carbon-addons-iot-react";
 
@@ -103,14 +103,14 @@ class App extends Component {
             <p>
               Edit <code>src/App.js</code> and save to reload.
             </p>
-            <ButtonEnhanced
+            <Button
               href="https://beta.carbon-addons-iot-react.com/"
               target="_blank"
               onClick={() => {}}
               onFocus={() => {}}
             >
               Get Components
-            </ButtonEnhanced>
+            </Button>
           </div>
         </section>
       </main>

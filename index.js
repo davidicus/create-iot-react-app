@@ -24,26 +24,26 @@ colors.setTheme({
 });
 
 const createReactApp = () => new Promise((resolve) => {
-  if (appName) {
-    exec(`npx create-react-app ${appName}`, (error, stdout, stderr) => {
-      if (error) {
-        console.error(`exec error: ${error}`.error);
-        resolve(false);
-      }
-      console.log(`stdout: ${stdout}`.data);
-      console.log(`stderr: ${stderr}`.data);
-      console.log(
-        'Created react app, now installing supporting packages.'.custom,
-      );
-      resolve(true);
-    });
-  } else {
-    console.log('\nNo app name was provided.'.help);
-    console.log('\nProvide an app name in the following format: '.help);
-    console.log('\ncreate-iot-react-app ', 'app-name\n'.help);
-    resolve(false);
-  }
-});
+    if (appName) {
+      exec(`npx create-react-app ${appName}`, (error, stdout, stderr) => {
+        if (error) {
+          console.error(`exec error: ${error}`.error);
+          resolve(false);
+        }
+        console.log(`stdout: ${stdout}`.data);
+        console.log(`stderr: ${stderr}`.data);
+        console.log(
+          'Created react app, now installing supporting packages.'.custom,
+        );
+        resolve(true);
+      });
+    } else {
+      console.log('\nNo app name was provided.'.help);
+      console.log('\nProvide an app name in the following format: '.help);
+      console.log('\ncreate-iot-react-app ', 'app-name\n'.help);
+      resolve(false);
+    }
+  });
 
 // const cdAndStorybook = () => new Promise((resolve, reject) => {
 //     exec(
@@ -64,39 +64,39 @@ const createReactApp = () => new Promise((resolve) => {
 //   });
 
 const installPackages = () => new Promise((resolve) => {
-  console.log(
-    '\nInstalling node-sass, @reach/router, react-intl, carbon-components, @carbon/icons, @carbon/icons-react, carbon-addons-iot-react@beta, classnames\n'
-      .help,
-  );
-  exec(
-    `cd ${appName} && yarn --cwd ${appDirectory} add node-sass @reach/router react-intl carbon-components @carbon/icons @carbon/icons-react carbon-addons-iot-react@beta classnames`,
-    () => {
-      console.log('\nFinished installing packages\n'.custom);
-      resolve();
-    },
-  );
-});
+    console.log(
+      '\nInstalling node-sass, @reach/router, react-intl, @carbon/icons, @carbon/icons-react, carbon-addons-iot-react, classnames\n'
+        .help,
+    );
+    exec(
+      `cd ${appName} && yarn --cwd ${appDirectory} add node-sass @reach/router react-intl @carbon/icons @carbon/icons-react carbon-addons-iot-react classnames`,
+      () => {
+        console.log('\nFinished installing packages\n'.custom);
+        resolve();
+      },
+    );
+  });
 
 const updateTemplates = () => new Promise((resolve) => {
-  const promises = [];
-  Object.keys(templates).forEach((fileName, i) => {
-    promises[i] = new Promise((res) => {
-      fs.writeFile(
-        `${appDirectory}/src/${fileName}`,
-        templates[fileName],
-        (err) => {
-          if (err) {
-            return console.log(err);
-          }
-          res();
-        },
-      );
+    const promises = [];
+    Object.keys(templates).forEach((fileName, i) => {
+      promises[i] = new Promise((res) => {
+        fs.writeFile(
+          `${appDirectory}/src/${fileName}`,
+          templates[fileName],
+          (err) => {
+            if (err) {
+              return console.log(err);
+            }
+            res();
+          },
+        );
+      });
+    });
+    Promise.all(promises).then(() => {
+      resolve();
     });
   });
-  Promise.all(promises).then(() => {
-    resolve();
-  });
-});
 
 const run = async () => {
   console.log(
