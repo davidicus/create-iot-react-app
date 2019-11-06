@@ -1,10 +1,5 @@
 module.exports = `
-@import "~carbon-addons-iot-react/lib/css/carbon-addons-iot-react.css";
-@import "~carbon-addons-iot-react/lib/scss/globals/scss/vars";
-@import "~carbon-addons-iot-react/lib/scss/globals/scss/colors";
-@import "~carbon-addons-iot-react/lib/scss/globals/scss/theme";
-
-
+@import "~carbon-addons-iot-react/lib/scss/styles.scss";
 
 html,
 body,
@@ -29,12 +24,12 @@ body,
   background-color: $ui-background;
   color: $text-01;
   height: 100%;
+  padding: $spacing-09 0 0 $spacing-09;
   width: 100%;
-  padding: 3rem 0 0 3rem;
 
   // content under the page header
   &-content {
-    padding: 1rem;
+    padding: $spacing-05;
   }
 
   &-content p {
