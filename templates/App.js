@@ -8,7 +8,7 @@ import {
   Header,
   SideNav,
   Button,
-  PageHero
+  PageTitleBar
 } from "carbon-addons-iot-react";
 
 import "./App.scss";
@@ -73,14 +73,20 @@ class App extends Component {
                   {
                     label: "user",
                     onClick: () => {},
-                    btnContent: (
-                      <p className="header-link">
-                        JohnDoe@ibm.com<span>TenantId: Acme</span>
-                      </p>
-                    )
+                    btnContent: <Group />
                   }
                 ]}
                 appName="Watson IoT"
+                headerPanel={{
+                  className: "header-panel",
+                  /* eslint-disable */
+                  content: React.forwardRef((props, ref) => (
+                    <a href="#" ref={ref} {...props}>
+                      Header panel content
+                    </a>
+                  ))
+                  /* eslint-enable */
+                }}
                 isSideNavExpanded={isSideNavExpanded}
                 onClickSideNavExpand={onClickSideNavExpand}
               />
@@ -94,17 +100,17 @@ class App extends Component {
         />
 
         <section className="main">
-          <PageHero
+          <PageTitleBar
             className="main-page-hero"
             title="Watson IoT Starter App"
-            blurb="You can add some descriptive text that is associated with your page by adding the blurb prop to the PageHero element."
+            description="You can add some descriptive text that is associated with your page by adding the description prop to the PageTitleBar element."
           />
           <div className="main-content">
             <p>
               Edit <code>src/App.js</code> and save to reload.
             </p>
             <Button
-              href="https://beta.carbon-addons-iot-react.com/"
+              href="https://carbon-addons-iot-react.com/"
               target="_blank"
               onClick={() => {}}
               onFocus={() => {}}
