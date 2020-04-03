@@ -27,3 +27,5 @@ or
 ```
 npm start
 ```
+
+This will start your react application loaded with the UI shell from `carbon-addons-iot-react` ui library project.
