@@ -67,12 +67,18 @@ const createReactApp = () =>
 const installPackages = () =>
   new Promise(resolve => {
     console.log(
-      "\nInstalling node-sass, @reach/router, react-intl, @carbon/icons, @carbon/icons-react, carbon-addons-iot-react, classnames\n"
+      "\nInstalling node-sass, @reach/router, react-intl, d3, carbon-addons-iot-react, classnames\n"
         .help
     );
     exec(
       `cd ${appName} && yarn --cwd ${appDirectory} add node-sass @reach/router react-intl d3 carbon-addons-iot-react classnames`,
-      () => {
+      (error, stdout, stderr) => {
+        if (error) {
+          console.error(`exec error: ${error}`);
+          return;
+        }
+        console.log(`stdout: ${stdout}`);
+        console.error(`stderr: ${stderr}`);
         console.log("\nFinished installing packages\n".custom);
         resolve();
       }
