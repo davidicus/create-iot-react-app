@@ -20,11 +20,11 @@ colors.setTheme({
   warn: "yellow",
   debug: "blue",
   error: "red",
-  custom: ["cyan", "bold"]
+  custom: ["cyan", "bold"],
 });
 
 const createReactApp = () =>
-  new Promise(resolve => {
+  new Promise((resolve) => {
     if (appName) {
       exec(`npx create-react-app ${appName}`, (error, stdout, stderr) => {
         if (error) {
@@ -65,13 +65,13 @@ const createReactApp = () =>
 //   });
 
 const installPackages = () =>
-  new Promise(resolve => {
+  new Promise((resolve) => {
     console.log(
-      "\nInstalling node-sass, @reach/router, react-intl, d3, carbon-addons-iot-react, classnames\n"
+      "\nInstalling node-sass, @reach/router, react-intl, d3@5.14.2, carbon-addons-iot-react, classnames\n"
         .help
     );
     exec(
-      `cd ${appName} && yarn --cwd ${appDirectory} add node-sass @reach/router react-intl d3 carbon-addons-iot-react classnames`,
+      `cd ${appName} && yarn --cwd ${appDirectory} add node-sass @reach/router react-intl d3@5.14.2 carbon-addons-iot-react classnames`,
       (error, stdout, stderr) => {
         if (error) {
           console.error(`exec error: ${error}`);
@@ -86,14 +86,14 @@ const installPackages = () =>
   });
 
 const updateTemplates = () =>
-  new Promise(resolve => {
+  new Promise((resolve) => {
     const promises = [];
     Object.keys(templates).forEach((fileName, i) => {
-      promises[i] = new Promise(res => {
+      promises[i] = new Promise((res) => {
         fs.writeFile(
           `${appDirectory}/src/${fileName}`,
           templates[fileName],
-          err => {
+          (err) => {
             if (err) {
               return console.log(err);
             }
