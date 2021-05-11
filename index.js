@@ -71,7 +71,7 @@ const installPackages = () =>
         .help
     );
     exec(
-      `cd ${appName} && yarn --cwd ${appDirectory} add node-sass @reach/router react-intl d3@5.14.2 carbon-addons-iot-react classnames`,
+      `cd ${appName} && yarn --cwd ${appDirectory} add node-sass@^5.0.0 @reach/router react-intl d3@5.14.2 carbon-addons-iot-react classnames`,
       (error, stdout, stderr) => {
         if (error) {
           console.error(`exec error: ${error}`);
