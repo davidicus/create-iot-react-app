@@ -17,7 +17,8 @@
   "keywords": [
     "react",
     "create-react-app",
-    "node"
+    "node",
+    "Carbon"
   ],
   "author": "David Conner",
   "license": "MIT",

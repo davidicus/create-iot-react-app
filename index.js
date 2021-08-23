@@ -1,26 +1,25 @@
 #!/usr/bin/env node
 
-const fs = require("fs");
-const colors = require("colors");
-
-const { exec } = require("child_process");
-const templates = require("./templates/templates.js");
+const fs = require('fs');
+const colors = require('colors');
+const { exec } = require('child_process');
+const templates = require('./templates/templates.js');
 
 const appName = process.argv[2];
 const appDirectory = `${process.cwd()}/${appName}`;
 
 colors.setTheme({
-  silly: "rainbow",
-  input: "grey",
-  verbose: "cyan",
-  prompt: "grey",
-  info: "green",
-  data: "grey",
-  help: "cyan",
-  warn: "yellow",
-  debug: "blue",
-  error: "red",
-  custom: ["cyan", "bold"],
+  silly: 'rainbow',
+  input: 'grey',
+  verbose: 'cyan',
+  prompt: 'grey',
+  info: 'green',
+  data: 'grey',
+  help: 'cyan',
+  warn: 'yellow',
+  debug: 'blue',
+  error: 'red',
+  custom: ['cyan', 'bold'],
 });
 
 const createReactApp = () =>
@@ -34,14 +33,14 @@ const createReactApp = () =>
         console.log(`stdout: ${stdout}`.data);
         console.log(`stderr: ${stderr}`.data);
         console.log(
-          "Created react app, now installing supporting packages.".custom
+          'Created react app, now installing supporting packages.'.custom
         );
         resolve(true);
       });
     } else {
-      console.log("\nNo app name was provided.".help);
-      console.log("\nProvide an app name in the following format: ".help);
-      console.log("\ncreate-iot-react-app ", "app-name\n".help);
+      console.log('\nNo app name was provided.'.help);
+      console.log('\nProvide an app name in the following format: '.help);
+      console.log('\ncreate-iot-react-app ', 'app-name\n'.help);
       resolve(false);
     }
   });
@@ -67,11 +66,11 @@ const createReactApp = () =>
 const installPackages = () =>
   new Promise((resolve) => {
     console.log(
-      "\nInstalling node-sass, @reach/router, react-intl, d3@5.14.2, carbon-addons-iot-react, classnames\n"
+      '\nInstalling sass d3@5.14.2, carbon-addons-iot-react@next, classnames\n'
         .help
     );
     exec(
-      `cd ${appName} && yarn --cwd ${appDirectory} add node-sass@^5.0.0 @reach/router react-intl d3@5.14.2 carbon-addons-iot-react classnames`,
+      `cd ${appName} && yarn --cwd ${appDirectory} add sass d3@5.14.2 carbon-addons-iot-react@next classnames`,
       (error, stdout, stderr) => {
         if (error) {
           console.error(`exec error: ${error}`);
@@ -79,7 +78,7 @@ const installPackages = () =>
         }
         console.log(`stdout: ${stdout}`);
         console.error(`stderr: ${stderr}`);
-        console.log("\nFinished installing packages\n".custom);
+        console.log('\nFinished installing packages\n'.custom);
         resolve();
       }
     );
@@ -109,12 +108,12 @@ const updateTemplates = () =>
 
 const run = async () => {
   console.log(
-    "Starting install of WIoT React app, this may take a minute.".custom
+    'Starting install of WIoT React app, this may take a minute.'.custom
   );
   const success = await createReactApp();
   if (!success) {
     console.log(
-      "Something went wrong while trying to create a new React app using create-react-app"
+      'Something went wrong while trying to create a new React app using create-react-app'
         .error
     );
     return false;
@@ -123,7 +122,7 @@ const run = async () => {
   await installPackages();
   await updateTemplates();
   console.log(
-    "All done. To get started `cd` into your project folder and type `yarn start`"
+    'All done. To get started `cd` into your project folder and type `yarn start`'
       .help
   );
 };
