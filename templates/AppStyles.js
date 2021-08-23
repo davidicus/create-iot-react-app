@@ -36,5 +36,4 @@ body,
     margin-bottom: $layout-01;
   }
 }
-
 `;
