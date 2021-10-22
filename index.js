@@ -3,6 +3,8 @@
 const fs = require('fs');
 const colors = require('colors');
 const { exec } = require('child_process');
+const process = require('process');
+
 const templates = require('./templates/templates.js');
 
 const appName = process.argv[2];
@@ -45,32 +47,13 @@ const createReactApp = () =>
     }
   });
 
-// const cdAndStorybook = () => new Promise((resolve, reject) => {
-//     exec(
-//       `cd ${appName} && npx -p @storybook/cli sb init`,
-//       (error, stdout, stderr) => {
-//         if (error) {
-//           console.error(`exec error: ${error}`.error);
-//           reject();
-//         }
-//         console.log(`stdout: ${stdout}`.data);
-//         console.log(`stderr: ${stderr}`.data);
-//         console.log(
-//           'Storybook added, now installing supporting packages.'.custom,
-//         );
-//         resolve();
-//       },
-//     );
-//   });
-
 const installPackages = () =>
   new Promise((resolve) => {
     console.log(
-      '\nInstalling sass d3@5.14.2, carbon-addons-iot-react@next, classnames\n'
-        .help
+      '\nInstalling sass, d3, carbon-addons-iot-react@next, & classnames\n'.help
     );
     exec(
-      `cd ${appName} && yarn --cwd ${appDirectory} add sass d3@5.14.2 carbon-addons-iot-react@next classnames`,
+      `cd ${appName} && yarn --cwd ${appDirectory} add sass d3 carbon-addons-iot-react@next classnames`,
       (error, stdout, stderr) => {
         if (error) {
           console.error(`exec error: ${error}`);
@@ -116,7 +99,7 @@ const run = async () => {
       'Something went wrong while trying to create a new React app using create-react-app'
         .error
     );
-    return false;
+    process.exit(1);
   }
   // await cdAndStorybook();
   await installPackages();
@@ -125,6 +108,7 @@ const run = async () => {
     'All done. To get started `cd` into your project folder and type `yarn start`'
       .help
   );
+  process.exit();
 };
 
 run();
